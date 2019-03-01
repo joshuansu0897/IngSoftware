@@ -71,7 +71,7 @@ public class UserDB extends DB {
         String password = null;
         String username = null;
 
-        String query = "SELECT username, password\n"
+        String query = "SELECT username, password "
                 + "	FROM User WHERE username = ?";
 
         try (Connection conS = getConnection(); PreparedStatement stmS = conS.prepareStatement(query)) {
@@ -124,7 +124,7 @@ public class UserDB extends DB {
     public ArrayList<User> getAllUsers() throws Exception {
         ArrayList<User> users = new ArrayList();
 
-        String query = "SELECT id, name, username, password, createAt, updateAt\n"
+        String query = "SELECT id, name, username, password, createAt, updateAt "
                 + "	FROM User";
 
         try (Connection conSer = getConnection(); PreparedStatement stmSer = conSer.prepareStatement(query)) {
@@ -147,7 +147,7 @@ public class UserDB extends DB {
     public User getUserByUsername(String str) throws Exception {
         User user = null;
 
-        String query = "SELECT id, name, username, password, createAt, updateAt\n"
+        String query = "SELECT id, name, username, password, createAt, updateAt "
                 + "	FROM User WHERE username=?";
 
         try (Connection conSer = getConnection(); PreparedStatement stmSer = conSer.prepareStatement(query)) {

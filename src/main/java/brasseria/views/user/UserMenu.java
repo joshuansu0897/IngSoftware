@@ -50,7 +50,7 @@ public class UserMenu extends javax.swing.JDialog {
                 java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
