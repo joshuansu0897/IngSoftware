@@ -107,7 +107,7 @@ public class ProveedorDB extends DB {
                     proveedor.setName(rsSer.getString("name"));
                     proveedor.setDescription(rsSer.getString("description"));
                     proveedor.setCreateAt(rsSer.getObject("createAt", LocalDate.class));
-                    proveedor.setCreateAt(rsSer.getObject("updateAt", LocalDate.class));
+                    proveedor.setUpdateAt(rsSer.getObject("updateAt", LocalDate.class));
                     proveedores.add(proveedor);
                 }
             }
@@ -130,7 +130,7 @@ public class ProveedorDB extends DB {
                     proveedor.setName(rsSer.getString("name"));
                     proveedor.setDescription(rsSer.getString("description"));
                     proveedor.setCreateAt(rsSer.getObject("createAt", LocalDate.class));
-                    proveedor.setCreateAt(rsSer.getObject("updateAt", LocalDate.class));
+                    proveedor.setUpdateAt(rsSer.getObject("updateAt", LocalDate.class));
                 }
             }
         }

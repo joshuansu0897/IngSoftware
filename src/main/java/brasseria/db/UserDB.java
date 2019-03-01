@@ -136,7 +136,7 @@ public class UserDB extends DB {
                     U.setUsername(rsSer.getString("username"));
                     U.setPassword(rsSer.getString("password"));
                     U.setCreateAt(rsSer.getObject("createAt", LocalDate.class));
-                    U.setCreateAt(rsSer.getObject("updateAt", LocalDate.class));
+                    U.setUpdateAt(rsSer.getObject("updateAt", LocalDate.class));
                     users.add(U);
                 }
             }
@@ -160,7 +160,7 @@ public class UserDB extends DB {
                     user.setUsername(rsSer.getString("username"));
                     user.setPassword(rsSer.getString("password"));
                     user.setCreateAt(rsSer.getObject("createAt", LocalDate.class));
-                    user.setCreateAt(rsSer.getObject("updateAt", LocalDate.class));
+                    user.setUpdateAt(rsSer.getObject("updateAt", LocalDate.class));
                 }
             }
         }
