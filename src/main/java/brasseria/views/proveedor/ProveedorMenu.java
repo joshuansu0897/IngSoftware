@@ -2,7 +2,6 @@ package brasseria.views.proveedor;
 
 import brasseria.db.ProveedorDB;
 import brasseria.model.Proveedor;
-import brasseria.model.ProveedorView;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.apache.log4j.Logger;

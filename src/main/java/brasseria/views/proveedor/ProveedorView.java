@@ -1,6 +1,7 @@
-package brasseria.model;
+package brasseria.views.proveedor;
 
 import brasseria.db.ProveedorDB;
+import brasseria.model.Proveedor;
 import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
 

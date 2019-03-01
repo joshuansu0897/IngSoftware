@@ -62,7 +62,7 @@ public class ProveedorDB extends DB {
         boolean nueva = proveedor.getId() == -1;
 
         if (proveedorExist(proveedor.getName()) && nueva) {
-            JOptionPane.showMessageDialog(null, "ya tienes un proveedor con ee nombre");
+            JOptionPane.showMessageDialog(null, "ya tienes un proveedor con ese nombre");
             return false;
         }
         

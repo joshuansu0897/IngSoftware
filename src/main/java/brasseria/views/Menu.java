@@ -59,7 +59,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tabla);
 
-        jButton1.setText("Alamcen");
+        jButton1.setText("Almacen");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
