@@ -199,7 +199,7 @@ public class UserView extends javax.swing.JDialog {
         if (user.getId() != -1) {
             javax.swing.JPasswordField pwd = new javax.swing.JPasswordField();
 
-            JOptionPane.showConfirmDialog(null, pwd, "Password antiguo", JOptionPane.OK_CANCEL_OPTION);
+            JOptionPane.showConfirmDialog(null, pwd, "Password actual del usuario", JOptionPane.OK_CANCEL_OPTION);
 
             String pass = new String(pwd.getPassword());
             pass = Util.encrypt(pass);

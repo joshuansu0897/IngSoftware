@@ -65,7 +65,7 @@ public class ProveedorDB extends DB {
             JOptionPane.showMessageDialog(null, "ya tienes un proveedor con ese nombre");
             return false;
         }
-        
+
         String query;
         try (Connection con = getConnection()) {
             PreparedStatement stm;
@@ -123,6 +123,28 @@ public class ProveedorDB extends DB {
 
         try (Connection conSer = getConnection(); PreparedStatement stmSer = conSer.prepareStatement(query)) {
             stmSer.setString(1, str);
+            try (ResultSet rsSer = stmSer.executeQuery()) {
+                while (rsSer.next()) {
+                    proveedor = new Proveedor();
+                    proveedor.setId(rsSer.getLong("id"));
+                    proveedor.setName(rsSer.getString("name"));
+                    proveedor.setDescription(rsSer.getString("description"));
+                    proveedor.setCreateAt(rsSer.getObject("createAt", LocalDate.class));
+                    proveedor.setUpdateAt(rsSer.getObject("updateAt", LocalDate.class));
+                }
+            }
+        }
+        return proveedor;
+    }
+
+    public Proveedor getProveedorById(long id) throws Exception {
+        Proveedor proveedor = null;
+
+        String query = "SELECT id, name, description, createAt, updateAt "
+                + "	FROM Proveedor WHERE id=?";
+
+        try (Connection conSer = getConnection(); PreparedStatement stmSer = conSer.prepareStatement(query)) {
+            stmSer.setLong(1, id);
             try (ResultSet rsSer = stmSer.executeQuery()) {
                 while (rsSer.next()) {
                     proveedor = new Proveedor();

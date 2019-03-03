@@ -146,11 +146,11 @@ public class ProveedorMenu extends javax.swing.JDialog {
             logger.error("Error al buscar proveedor.", ex);
         }
 
-        proveedorview(proveedor);
+        proveedorView(proveedor);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        proveedorview(null);
+        proveedorView(null);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -166,7 +166,7 @@ public class ProveedorMenu extends javax.swing.JDialog {
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 
-    private void proveedorview(Proveedor proveedor) {
+    private void proveedorView(Proveedor proveedor) {
         ProveedorView uv = new ProveedorView(null, true, proveedor);
         uv.setLocationRelativeTo(null);
         uv.setVisible(true);
