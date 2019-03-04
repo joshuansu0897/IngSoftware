@@ -1,8 +1,8 @@
 package brasseria.db;
 
 import brasseria.config.Configuration;
+import brasseria.model.Movimiento;
 import brasseria.model.Producto;
-import brasseria.model.Proveedor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -66,7 +66,7 @@ public class ProductoDB extends DB {
             JOptionPane.showMessageDialog(null, "ya tienes un producto con ese nombre");
             return false;
         }
-        
+
         String query;
         try (Connection con = getConnection()) {
             PreparedStatement stm;
@@ -91,6 +91,23 @@ public class ProductoDB extends DB {
             stm.setLong(4, producto.getIdProveedor());
 
             stm.executeUpdate();
+
+            if (nueva) {
+                ResultSet rs = stm.getGeneratedKeys();
+                while (rs.next()) {
+                    long id = rs.getInt(1);
+
+                    Movimiento movimiento = new Movimiento();
+                    movimiento.setAdded_amount(0);
+                    movimiento.setRetired_amount(0);
+                    movimiento.setTotal(0);
+                    movimiento.setProduct_id(id);
+                    producto.setId(id);
+
+                    MovimientoDB.getInstance().saveMovimiento(movimiento);
+                }
+            }
+
             stm.close();
         }
         return true;

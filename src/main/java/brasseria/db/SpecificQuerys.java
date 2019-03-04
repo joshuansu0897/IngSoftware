@@ -70,4 +70,39 @@ public class SpecificQuerys extends DB {
         return list;
     }
 
+    public Object[] getProductsAndCountByName(String name) throws Exception {
+        Object[] obj = null;
+
+        String query = "SELECT "
+                + " p.name,"
+                + " m.total "
+                + "FROM"
+                + " Product p "
+                + "INNER JOIN "
+                + "        ("
+                + "            SELECT  product_id, MAX(createAt) MaxDate"
+                + "            FROM    Movements"
+                + "            GROUP BY product_id"
+                + "        ) MaxDates "
+                + "ON "
+                + " p.id = MaxDates.product_id "
+                + "INNER JOIN "
+                + " Movements m "
+                + "ON "
+                + " MaxDates.product_id = m.product_id "
+                + "AND "
+                + " MaxDates.MaxDate = m.createAt "
+                + "WHERE p.name = ?";
+
+        try (Connection conSer = getConnection(); PreparedStatement stmSer = conSer.prepareStatement(query)) {
+            stmSer.setString(1, name);
+            try (ResultSet rsSer = stmSer.executeQuery()) {
+                while (rsSer.next()) {
+                    obj = new Object[]{rsSer.getString("name"), 0, 0, rsSer.getString("total")};
+                }
+            }
+        }
+
+        return obj;
+    }
 }
