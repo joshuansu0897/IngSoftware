@@ -2,14 +2,9 @@ package brasseria.db;
 
 import brasseria.config.Configuration;
 import brasseria.model.Movimiento;
-import brasseria.model.Producto;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import org.apache.log4j.Logger;
 
 public class MovimientoDB extends DB {
