@@ -38,15 +38,14 @@ public class MovimientoDB extends DB {
     public void saveMovimiento(Movimiento movimiento) throws Exception {
         try (Connection con = getConnection()) {
             String query = "INSERT INTO Movements(product_id, added_amount, retired_amount, total) VALUES (?, ?, ?, ?)";
-            PreparedStatement stm = con.prepareStatement(query);
-
-            stm.setLong(1, movimiento.getProduct_id());
-            stm.setLong(2, movimiento.getAdded_amount());
-            stm.setLong(3, movimiento.getRetired_amount());
-            stm.setLong(4, movimiento.getTotal());
-
-            stm.executeUpdate();
-            stm.close();
+            try (PreparedStatement stm = con.prepareStatement(query)) {
+                stm.setLong(1, movimiento.getProduct_id());
+                stm.setLong(2, movimiento.getAdded_amount());
+                stm.setLong(3, movimiento.getRetired_amount());
+                stm.setLong(4, movimiento.getTotal());
+                
+                stm.executeUpdate();
+            }
         }
     }
 
@@ -54,15 +53,16 @@ public class MovimientoDB extends DB {
         if (movimientos != null && !movimientos.isEmpty()) {
             try (Connection con = getConnection()) {
                 String query = "INSERT INTO Movements(product_id, added_amount, retired_amount, total) VALUES (?, ?, ?, ?)";
-                PreparedStatement stm = con.prepareStatement(query);
-                for (Movimiento movimiento : movimientos) {
-                    stm.setLong(1, movimiento.getProduct_id());
-                    stm.setLong(2, movimiento.getAdded_amount());
-                    stm.setLong(3, movimiento.getRetired_amount());
-                    stm.setLong(4, movimiento.getTotal());
-                    stm.addBatch();
+                try (PreparedStatement stm = con.prepareStatement(query)) {
+                    for (Movimiento movimiento : movimientos) {
+                        stm.setLong(1, movimiento.getProduct_id());
+                        stm.setLong(2, movimiento.getAdded_amount());
+                        stm.setLong(3, movimiento.getRetired_amount());
+                        stm.setLong(4, movimiento.getTotal());
+                        stm.addBatch();
+                    }
+                    stm.executeBatch();
                 }
-                stm.executeBatch();
             }
         }
     }

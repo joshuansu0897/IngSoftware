@@ -50,10 +50,11 @@ public class ProductoDB extends DB {
 
         try (Connection conS = getConnection(); PreparedStatement stmS = conS.prepareStatement(query)) {
             stmS.setString(1, name);
-            ResultSet rs = stmS.executeQuery();
-            while (rs.next()) {
-                description = rs.getString("description");
-                resName = rs.getString("name");
+            try (ResultSet rs = stmS.executeQuery()) {
+                while (rs.next()) {
+                    description = rs.getString("description");
+                    resName = rs.getString("name");
+                }
             }
         }
         return (description != null && resName != null);
@@ -93,18 +94,19 @@ public class ProductoDB extends DB {
             stm.executeUpdate();
 
             if (nueva) {
-                ResultSet rs = stm.getGeneratedKeys();
-                while (rs.next()) {
-                    long id = rs.getInt(1);
+                try (ResultSet rs = stm.getGeneratedKeys()) {
+                    while (rs.next()) {
+                        long id = rs.getInt(1);
 
-                    Movimiento movimiento = new Movimiento();
-                    movimiento.setAdded_amount(0);
-                    movimiento.setRetired_amount(0);
-                    movimiento.setTotal(0);
-                    movimiento.setProduct_id(id);
-                    producto.setId(id);
+                        Movimiento movimiento = new Movimiento();
+                        movimiento.setAdded_amount(0);
+                        movimiento.setRetired_amount(0);
+                        movimiento.setTotal(0);
+                        movimiento.setProduct_id(id);
+                        producto.setId(id);
 
-                    MovimientoDB.getInstance().saveMovimiento(movimiento);
+                        MovimientoDB.getInstance().saveMovimiento(movimiento);
+                    }
                 }
             }
 

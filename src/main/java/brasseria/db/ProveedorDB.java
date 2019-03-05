@@ -49,10 +49,11 @@ public class ProveedorDB extends DB {
 
         try (Connection conS = getConnection(); PreparedStatement stmS = conS.prepareStatement(query)) {
             stmS.setString(1, name);
-            ResultSet rs = stmS.executeQuery();
-            while (rs.next()) {
-                description = rs.getString("name");
-                resName = rs.getString("description");
+            try (ResultSet rs = stmS.executeQuery()) {
+                while (rs.next()) {
+                    description = rs.getString("name");
+                    resName = rs.getString("description");
+                }
             }
         }
         return (description != null && resName != null);

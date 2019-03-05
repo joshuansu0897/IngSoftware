@@ -56,9 +56,10 @@ public class UserDB extends DB {
         String password = null;
         try (Connection conS = getConnection(); PreparedStatement stmS = conS.prepareStatement(query)) {
             stmS.setString(1, usuario);
-            ResultSet rs = stmS.executeQuery();
-            while (rs.next()) {
-                password = rs.getString("password");
+            try (ResultSet rs = stmS.executeQuery()) {
+                while (rs.next()) {
+                    password = rs.getString("password");
+                }
             }
         }
 
@@ -76,10 +77,11 @@ public class UserDB extends DB {
 
         try (Connection conS = getConnection(); PreparedStatement stmS = conS.prepareStatement(query)) {
             stmS.setString(1, uss);
-            ResultSet rs = stmS.executeQuery();
-            while (rs.next()) {
-                password = rs.getString("password");
-                username = rs.getString("username");
+            try (ResultSet rs = stmS.executeQuery()) {
+                while (rs.next()) {
+                    password = rs.getString("password");
+                    username = rs.getString("username");
+                }
             }
         }
         return (password != null && username != null);
