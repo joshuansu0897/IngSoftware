@@ -7,48 +7,48 @@ package brasseria.util;
 
 import java.time.LocalDate;
 import java.util.Date;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.testng.Assert.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 /**
  *
  * @author joshuansu
  */
-public class UtilTest {
+public class UtilNGTest {
     
-    public UtilTest() {
+    public UtilNGTest() {
     }
-    
+
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() throws Exception {
     }
-    
+
     @AfterClass
-    public static void tearDownClass() {
+    public static void tearDownClass() throws Exception {
     }
-    
-    @Before
-    public void setUp() {
+
+    @BeforeMethod
+    public void setUpMethod() throws Exception {
     }
-    
-    @After
-    public void tearDown() {
+
+    @AfterMethod
+    public void tearDownMethod() throws Exception {
     }
 
     /**
      * Test of getLocalDateFromDate method, of class Util.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetLocalDateFromDate() {
         System.out.println("getLocalDateFromDate");
         Date d = null;
         LocalDate expResult = null;
         LocalDate result = Util.getLocalDateFromDate(d);
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -56,13 +56,13 @@ public class UtilTest {
     /**
      * Test of getDateFromLocalDate method, of class Util.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetDateFromLocalDate() {
         System.out.println("getDateFromLocalDate");
         LocalDate l = null;
         Date expResult = null;
         Date result = Util.getDateFromLocalDate(l);
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -70,13 +70,13 @@ public class UtilTest {
     /**
      * Test of LocalDateToString method, of class Util.
      */
-    @Test
+    @Test(enabled=false)
     public void testLocalDateToString() {
         System.out.println("LocalDateToString");
         LocalDate l = null;
         String expResult = "";
         String result = Util.LocalDateToString(l);
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -84,13 +84,13 @@ public class UtilTest {
     /**
      * Test of LocalDateToStringSpanish method, of class Util.
      */
-    @Test
+    @Test(enabled=false)
     public void testLocalDateToStringSpanish() {
         System.out.println("LocalDateToStringSpanish");
         LocalDate l = null;
         String expResult = "";
         String result = Util.LocalDateToStringSpanish(l);
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -98,13 +98,13 @@ public class UtilTest {
     /**
      * Test of CapitalizeFirstLetter method, of class Util.
      */
-    @Test
+    @Test(enabled=false)
     public void testCapitalizeFirstLetter() {
         System.out.println("CapitalizeFirstLetter");
         String str = "";
         String expResult = "";
         String result = Util.CapitalizeFirstLetter(str);
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -112,13 +112,13 @@ public class UtilTest {
     /**
      * Test of encrypt method, of class Util.
      */
-    @Test
+    @Test(enabled=false)
     public void testEncrypt() {
         System.out.println("encrypt");
         String str = "";
         String expResult = "";
         String result = Util.encrypt(str);
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

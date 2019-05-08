@@ -6,48 +6,48 @@
 package brasseria.model;
 
 import java.time.LocalDate;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.testng.Assert.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 /**
  *
  * @author joshuansu
  */
-public class ProveedorTest {
+public class ProveedorNGTest {
     
-    public ProveedorTest() {
+    public ProveedorNGTest() {
     }
-    
+
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() throws Exception {
     }
-    
+
     @AfterClass
-    public static void tearDownClass() {
+    public static void tearDownClass() throws Exception {
     }
-    
-    @Before
-    public void setUp() {
+
+    @BeforeMethod
+    public void setUpMethod() throws Exception {
     }
-    
-    @After
-    public void tearDown() {
+
+    @AfterMethod
+    public void tearDownMethod() throws Exception {
     }
 
     /**
      * Test of getId method, of class Proveedor.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetId() {
         System.out.println("getId");
         Proveedor instance = new Proveedor();
         long expResult = 0L;
         long result = instance.getId();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -55,7 +55,7 @@ public class ProveedorTest {
     /**
      * Test of setId method, of class Proveedor.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetId() {
         System.out.println("setId");
         long id = 0L;
@@ -68,13 +68,13 @@ public class ProveedorTest {
     /**
      * Test of getName method, of class Proveedor.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetName() {
         System.out.println("getName");
         Proveedor instance = new Proveedor();
         String expResult = "";
         String result = instance.getName();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -82,7 +82,7 @@ public class ProveedorTest {
     /**
      * Test of setName method, of class Proveedor.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetName() {
         System.out.println("setName");
         String name = "";
@@ -95,13 +95,13 @@ public class ProveedorTest {
     /**
      * Test of getDescription method, of class Proveedor.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetDescription() {
         System.out.println("getDescription");
         Proveedor instance = new Proveedor();
         String expResult = "";
         String result = instance.getDescription();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -109,7 +109,7 @@ public class ProveedorTest {
     /**
      * Test of setDescription method, of class Proveedor.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetDescription() {
         System.out.println("setDescription");
         String description = "";
@@ -122,13 +122,13 @@ public class ProveedorTest {
     /**
      * Test of getCreateAt method, of class Proveedor.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetCreateAt() {
         System.out.println("getCreateAt");
         Proveedor instance = new Proveedor();
         LocalDate expResult = null;
         LocalDate result = instance.getCreateAt();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -136,7 +136,7 @@ public class ProveedorTest {
     /**
      * Test of setCreateAt method, of class Proveedor.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetCreateAt() {
         System.out.println("setCreateAt");
         LocalDate createAt = null;
@@ -149,13 +149,13 @@ public class ProveedorTest {
     /**
      * Test of getUpdateAt method, of class Proveedor.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetUpdateAt() {
         System.out.println("getUpdateAt");
         Proveedor instance = new Proveedor();
         LocalDate expResult = null;
         LocalDate result = instance.getUpdateAt();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -163,7 +163,7 @@ public class ProveedorTest {
     /**
      * Test of setUpdateAt method, of class Proveedor.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetUpdateAt() {
         System.out.println("setUpdateAt");
         LocalDate updateAt = null;

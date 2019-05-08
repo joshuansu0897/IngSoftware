@@ -6,48 +6,48 @@
 package brasseria.model;
 
 import java.time.LocalDate;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.testng.Assert.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 /**
  *
  * @author joshuansu
  */
-public class MovimientoTest {
+public class MovimientoNGTest {
     
-    public MovimientoTest() {
+    public MovimientoNGTest() {
     }
-    
+
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() throws Exception {
     }
-    
+
     @AfterClass
-    public static void tearDownClass() {
+    public static void tearDownClass() throws Exception {
     }
-    
-    @Before
-    public void setUp() {
+
+    @BeforeMethod
+    public void setUpMethod() throws Exception {
     }
-    
-    @After
-    public void tearDown() {
+
+    @AfterMethod
+    public void tearDownMethod() throws Exception {
     }
 
     /**
      * Test of getId method, of class Movimiento.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetId() {
         System.out.println("getId");
         Movimiento instance = new Movimiento();
         long expResult = 0L;
         long result = instance.getId();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -55,7 +55,7 @@ public class MovimientoTest {
     /**
      * Test of setId method, of class Movimiento.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetId() {
         System.out.println("setId");
         long id = 0L;
@@ -68,13 +68,13 @@ public class MovimientoTest {
     /**
      * Test of getProduct_id method, of class Movimiento.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetProduct_id() {
         System.out.println("getProduct_id");
         Movimiento instance = new Movimiento();
         long expResult = 0L;
         long result = instance.getProduct_id();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -82,7 +82,7 @@ public class MovimientoTest {
     /**
      * Test of setProduct_id method, of class Movimiento.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetProduct_id() {
         System.out.println("setProduct_id");
         long product_id = 0L;
@@ -95,13 +95,13 @@ public class MovimientoTest {
     /**
      * Test of getAdded_amount method, of class Movimiento.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetAdded_amount() {
         System.out.println("getAdded_amount");
         Movimiento instance = new Movimiento();
         long expResult = 0L;
         long result = instance.getAdded_amount();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -109,7 +109,7 @@ public class MovimientoTest {
     /**
      * Test of setAdded_amount method, of class Movimiento.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetAdded_amount() {
         System.out.println("setAdded_amount");
         long added_amount = 0L;
@@ -122,13 +122,13 @@ public class MovimientoTest {
     /**
      * Test of getRetired_amount method, of class Movimiento.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetRetired_amount() {
         System.out.println("getRetired_amount");
         Movimiento instance = new Movimiento();
         long expResult = 0L;
         long result = instance.getRetired_amount();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -136,7 +136,7 @@ public class MovimientoTest {
     /**
      * Test of setRetired_amount method, of class Movimiento.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetRetired_amount() {
         System.out.println("setRetired_amount");
         long retired_amount = 0L;
@@ -149,13 +149,13 @@ public class MovimientoTest {
     /**
      * Test of getTotal method, of class Movimiento.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetTotal() {
         System.out.println("getTotal");
         Movimiento instance = new Movimiento();
         long expResult = 0L;
         long result = instance.getTotal();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -163,7 +163,7 @@ public class MovimientoTest {
     /**
      * Test of setTotal method, of class Movimiento.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetTotal() {
         System.out.println("setTotal");
         long total = 0L;
@@ -176,13 +176,13 @@ public class MovimientoTest {
     /**
      * Test of getCreateAt method, of class Movimiento.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetCreateAt() {
         System.out.println("getCreateAt");
         Movimiento instance = new Movimiento();
         LocalDate expResult = null;
         LocalDate result = instance.getCreateAt();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -190,7 +190,7 @@ public class MovimientoTest {
     /**
      * Test of setCreateAt method, of class Movimiento.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetCreateAt() {
         System.out.println("setCreateAt");
         LocalDate createAt = null;
@@ -203,13 +203,13 @@ public class MovimientoTest {
     /**
      * Test of getUpdateAt method, of class Movimiento.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetUpdateAt() {
         System.out.println("getUpdateAt");
         Movimiento instance = new Movimiento();
         LocalDate expResult = null;
         LocalDate result = instance.getUpdateAt();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -217,7 +217,7 @@ public class MovimientoTest {
     /**
      * Test of setUpdateAt method, of class Movimiento.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetUpdateAt() {
         System.out.println("setUpdateAt");
         LocalDate updateAt = null;

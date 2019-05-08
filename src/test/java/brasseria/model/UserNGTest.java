@@ -6,48 +6,48 @@
 package brasseria.model;
 
 import java.time.LocalDate;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.testng.Assert.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 /**
  *
  * @author joshuansu
  */
-public class UserTest {
+public class UserNGTest {
     
-    public UserTest() {
+    public UserNGTest() {
     }
-    
+
     @BeforeClass
-    public static void setUpClass() {
+    public static void setUpClass() throws Exception {
     }
-    
+
     @AfterClass
-    public static void tearDownClass() {
+    public static void tearDownClass() throws Exception {
     }
-    
-    @Before
-    public void setUp() {
+
+    @BeforeMethod
+    public void setUpMethod() throws Exception {
     }
-    
-    @After
-    public void tearDown() {
+
+    @AfterMethod
+    public void tearDownMethod() throws Exception {
     }
 
     /**
      * Test of getId method, of class User.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetId() {
         System.out.println("getId");
         User instance = new User();
         long expResult = 0L;
         long result = instance.getId();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -55,7 +55,7 @@ public class UserTest {
     /**
      * Test of setId method, of class User.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetId() {
         System.out.println("setId");
         long id = 0L;
@@ -68,13 +68,13 @@ public class UserTest {
     /**
      * Test of getName method, of class User.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetName() {
         System.out.println("getName");
         User instance = new User();
         String expResult = "";
         String result = instance.getName();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -82,7 +82,7 @@ public class UserTest {
     /**
      * Test of setName method, of class User.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetName() {
         System.out.println("setName");
         String name = "";
@@ -95,13 +95,13 @@ public class UserTest {
     /**
      * Test of getUsername method, of class User.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetUsername() {
         System.out.println("getUsername");
         User instance = new User();
         String expResult = "";
         String result = instance.getUsername();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -109,7 +109,7 @@ public class UserTest {
     /**
      * Test of setUsername method, of class User.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetUsername() {
         System.out.println("setUsername");
         String username = "";
@@ -122,13 +122,13 @@ public class UserTest {
     /**
      * Test of getPassword method, of class User.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetPassword() {
         System.out.println("getPassword");
         User instance = new User();
         String expResult = "";
         String result = instance.getPassword();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -136,7 +136,7 @@ public class UserTest {
     /**
      * Test of setPassword method, of class User.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetPassword() {
         System.out.println("setPassword");
         String password = "";
@@ -149,13 +149,13 @@ public class UserTest {
     /**
      * Test of getCreateAt method, of class User.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetCreateAt() {
         System.out.println("getCreateAt");
         User instance = new User();
         LocalDate expResult = null;
         LocalDate result = instance.getCreateAt();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -163,7 +163,7 @@ public class UserTest {
     /**
      * Test of setCreateAt method, of class User.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetCreateAt() {
         System.out.println("setCreateAt");
         LocalDate createAt = null;
@@ -176,13 +176,13 @@ public class UserTest {
     /**
      * Test of getUpdateAt method, of class User.
      */
-    @Test
+    @Test(enabled=false)
     public void testGetUpdateAt() {
         System.out.println("getUpdateAt");
         User instance = new User();
         LocalDate expResult = null;
         LocalDate result = instance.getUpdateAt();
-        assertEquals(expResult, result);
+        assertEquals(result, expResult);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -190,7 +190,7 @@ public class UserTest {
     /**
      * Test of setUpdateAt method, of class User.
      */
-    @Test
+    @Test(enabled=false)
     public void testSetUpdateAt() {
         System.out.println("setUpdateAt");
         LocalDate updateAt = null;
