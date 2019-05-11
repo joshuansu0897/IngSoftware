@@ -18,7 +18,9 @@ import org.testng.annotations.Test;
  * @author joshuansu
  */
 public class ProductoNGTest {
-    
+
+    Producto producto = new Producto();
+
     public ProductoNGTest() {
     }
 
@@ -41,190 +43,140 @@ public class ProductoNGTest {
     /**
      * Test of getId method, of class Producto.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetId")
     public void testGetId() {
         System.out.println("getId");
-        Producto instance = new Producto();
-        long expResult = 0L;
-        long result = instance.getId();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        long expResult = 1;
+        assertEquals(producto.getId(), expResult);
     }
 
     /**
      * Test of setId method, of class Producto.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetId() {
         System.out.println("setId");
-        long id = 0L;
-        Producto instance = new Producto();
-        instance.setId(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        producto.setId(1);
     }
 
     /**
      * Test of getName method, of class Producto.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetName")
     public void testGetName() {
         System.out.println("getName");
-        Producto instance = new Producto();
-        String expResult = "";
-        String result = instance.getName();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String expResult = "Potato";
+        assertEquals(producto.getName(), expResult);
     }
 
     /**
      * Test of setName method, of class Producto.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetName() {
         System.out.println("setName");
-        String name = "";
-        Producto instance = new Producto();
-        instance.setName(name);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String name = "Potato";
+        producto.setName(name);
     }
 
     /**
      * Test of isPerecederos method, of class Producto.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetPerecederos")
     public void testIsPerecederos() {
         System.out.println("isPerecederos");
-        Producto instance = new Producto();
-        boolean expResult = false;
-        boolean result = instance.isPerecederos();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean expResult = true;
+        assertEquals(producto.isPerecederos(), expResult);
     }
 
     /**
      * Test of setPerecederos method, of class Producto.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetPerecederos() {
         System.out.println("setPerecederos");
-        boolean perecederos = false;
-        Producto instance = new Producto();
-        instance.setPerecederos(perecederos);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean perecederos = true;
+        producto.setPerecederos(perecederos);
     }
 
     /**
      * Test of getIdProveedor method, of class Producto.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetIdProveedor")
     public void testGetIdProveedor() {
         System.out.println("getIdProveedor");
-        Producto instance = new Producto();
-        long expResult = 0L;
-        long result = instance.getIdProveedor();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        long expResult = 2;
+        assertEquals(producto.getIdProveedor(), expResult);
     }
 
     /**
      * Test of setIdProveedor method, of class Producto.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetIdProveedor() {
         System.out.println("setIdProveedor");
-        long idProveedor = 0L;
-        Producto instance = new Producto();
-        instance.setIdProveedor(idProveedor);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        long idProveedor = 2;
+        producto.setIdProveedor(idProveedor);
     }
 
     /**
      * Test of getDescription method, of class Producto.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetDescription")
     public void testGetDescription() {
         System.out.println("getDescription");
-        Producto instance = new Producto();
-        String expResult = "";
-        String result = instance.getDescription();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String expResult = "It's a potato, I do not think I need a description";
+        assertEquals(producto.getDescription(), expResult);
     }
 
     /**
      * Test of setDescription method, of class Producto.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetDescription() {
         System.out.println("setDescription");
-        String description = "";
-        Producto instance = new Producto();
-        instance.setDescription(description);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String description = "It's a potato, I do not think I need a description";
+        producto.setDescription(description);
     }
 
     /**
      * Test of getCreateAt method, of class Producto.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetCreateAt")
     public void testGetCreateAt() {
         System.out.println("getCreateAt");
-        Producto instance = new Producto();
-        LocalDate expResult = null;
-        LocalDate result = instance.getCreateAt();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LocalDate expResult = LocalDate.of(2019, 1, 10);
+        assertEquals(producto.getCreateAt(), expResult);
     }
 
     /**
      * Test of setCreateAt method, of class Producto.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetCreateAt() {
         System.out.println("setCreateAt");
-        LocalDate createAt = null;
-        Producto instance = new Producto();
-        instance.setCreateAt(createAt);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LocalDate createAt = LocalDate.of(2019, 1, 10);
+        producto.setCreateAt(createAt);
     }
 
     /**
      * Test of getUpdateAt method, of class Producto.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetUpdateAt")
     public void testGetUpdateAt() {
         System.out.println("getUpdateAt");
-        Producto instance = new Producto();
-        LocalDate expResult = null;
-        LocalDate result = instance.getUpdateAt();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LocalDate expResult = LocalDate.of(2019, 2, 2);
+        assertEquals(producto.getUpdateAt(), expResult);
     }
 
     /**
      * Test of setUpdateAt method, of class Producto.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetUpdateAt() {
         System.out.println("setUpdateAt");
-        LocalDate updateAt = null;
-        Producto instance = new Producto();
-        instance.setUpdateAt(updateAt);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LocalDate updateAt = LocalDate.of(2019, 2, 2);
+        producto.setUpdateAt(updateAt);
     }
-    
+
 }
