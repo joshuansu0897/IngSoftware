@@ -18,7 +18,9 @@ import org.testng.annotations.Test;
  * @author joshuansu
  */
 public class UserNGTest {
-    
+
+    User user = new User();
+
     public UserNGTest() {
     }
 
@@ -41,163 +43,127 @@ public class UserNGTest {
     /**
      * Test of getId method, of class User.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetId")
     public void testGetId() {
         System.out.println("getId");
-        User instance = new User();
-        long expResult = 0L;
-        long result = instance.getId();
+        long expResult = 1;
+        long result = user.getId();
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setId method, of class User.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetId() {
         System.out.println("setId");
-        long id = 0L;
-        User instance = new User();
-        instance.setId(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        long id = 1;
+        user.setId(id);
     }
 
     /**
      * Test of getName method, of class User.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetName")
     public void testGetName() {
         System.out.println("getName");
-        User instance = new User();
-        String expResult = "";
-        String result = instance.getName();
+        String expResult = "Juan";
+        String result = user.getName();
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setName method, of class User.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetName() {
         System.out.println("setName");
-        String name = "";
-        User instance = new User();
-        instance.setName(name);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String name = "Juan";
+        user.setName(name);
     }
 
     /**
      * Test of getUsername method, of class User.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetUsername")
     public void testGetUsername() {
         System.out.println("getUsername");
-        User instance = new User();
-        String expResult = "";
-        String result = instance.getUsername();
+        String expResult = "juanitoAdm";
+        String result = user.getUsername();
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setUsername method, of class User.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetUsername() {
         System.out.println("setUsername");
-        String username = "";
-        User instance = new User();
-        instance.setUsername(username);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String username = "juanitoAdm";
+        user.setUsername(username);
     }
 
     /**
      * Test of getPassword method, of class User.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetPassword")
     public void testGetPassword() {
         System.out.println("getPassword");
-        User instance = new User();
-        String expResult = "";
-        String result = instance.getPassword();
+        String expResult = "password-secret-encrypt";
+        String result = user.getPassword();
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setPassword method, of class User.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetPassword() {
         System.out.println("setPassword");
-        String password = "";
-        User instance = new User();
-        instance.setPassword(password);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String password = "password-secret-encrypt";
+        user.setPassword(password);
     }
 
     /**
      * Test of getCreateAt method, of class User.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetCreateAt")
     public void testGetCreateAt() {
         System.out.println("getCreateAt");
-        User instance = new User();
-        LocalDate expResult = null;
-        LocalDate result = instance.getCreateAt();
+        LocalDate expResult = LocalDate.of(2018, 5, 10);
+        LocalDate result = user.getCreateAt();
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setCreateAt method, of class User.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetCreateAt() {
         System.out.println("setCreateAt");
-        LocalDate createAt = null;
-        User instance = new User();
-        instance.setCreateAt(createAt);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LocalDate createAt = LocalDate.of(2018, 5, 10);
+        user.setCreateAt(createAt);
     }
 
     /**
      * Test of getUpdateAt method, of class User.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetUpdateAt")
     public void testGetUpdateAt() {
         System.out.println("getUpdateAt");
-        User instance = new User();
-        LocalDate expResult = null;
-        LocalDate result = instance.getUpdateAt();
+        LocalDate expResult = LocalDate.of(2018, 5, 11);
+        LocalDate result = user.getUpdateAt();
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setUpdateAt method, of class User.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetUpdateAt() {
         System.out.println("setUpdateAt");
-        LocalDate updateAt = null;
-        User instance = new User();
-        instance.setUpdateAt(updateAt);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LocalDate updateAt = LocalDate.of(2018, 5, 11);
+        user.setUpdateAt(updateAt);
     }
-    
+
 }
