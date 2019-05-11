@@ -6,6 +6,10 @@
 package brasseria.db;
 
 import brasseria.model.User;
+import brasseria.util.Util;
+import java.io.File;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.ArrayList;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
@@ -19,16 +23,23 @@ import org.testng.annotations.Test;
  * @author joshuansu
  */
 public class UserDBNGTest {
-    
+
     public UserDBNGTest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+        new File("Configuracion/config.json").renameTo(new File("Configuracion/configProduction.json"));
+        new File("Configuracion/configTest.json").renameTo(new File("Configuracion/config.json"));
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
+        try (Connection con = MovimientoDB.getInstance().getConnection(); Statement stm = con.createStatement()) {
+            stm.execute("DELETE FROM User");
+        }
+        new File("Configuracion/config.json").renameTo(new File("Configuracion/configTest.json"));
+        new File("Configuracion/configProduction.json").renameTo(new File("Configuracion/config.json"));
     }
 
     @BeforeMethod
@@ -42,102 +53,93 @@ public class UserDBNGTest {
     /**
      * Test of getInstance method, of class UserDB.
      */
-    @Test(enabled=false)
+    @Test
     public void testGetInstance() {
         System.out.println("getInstance");
-        UserDB expResult = null;
-        UserDB result = UserDB.getInstance();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        UserDB instance = UserDB.getInstance();
+        assertNotNull(UserDB.getInstance());
+        assertEquals(instance, UserDB.getInstance());
     }
 
     /**
      * Test of autenticacion method, of class UserDB.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testGetUserByUsername")
     public void testAutenticacion() throws Exception {
         System.out.println("autenticacion");
-        String usuario = "";
-        String contraseña = "";
-        UserDB instance = null;
-        boolean expResult = false;
-        boolean result = instance.autenticacion(usuario, contraseña);
+        String usuario = "juanitoAdm";
+        String contraseña = "password de juanito es mega secreto";
+
+        boolean expResult = true;
+        boolean result = UserDB.getInstance().autenticacion(usuario, contraseña);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of userExist method, of class UserDB.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSaveUser")
     public void testUserExist() throws Exception {
         System.out.println("userExist");
-        String uss = "";
-        UserDB instance = null;
-        boolean expResult = false;
-        boolean result = instance.userExist(uss);
+        String uss = "juanitoAdm";
+        boolean expResult = true;
+
+        boolean result = UserDB.getInstance().userExist(uss);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of saveUser method, of class UserDB.
      */
-    @Test(enabled=false)
+    @Test
     public void testSaveUser() throws Exception {
         System.out.println("saveUser");
-        User user = null;
-        UserDB instance = null;
-        boolean expResult = false;
-        boolean result = instance.saveUser(user);
+        User user = new User();
+        user.setName("Juan");
+        user.setPassword(Util.encrypt("password de juanito es mega secreto"));
+        user.setUsername("juanitoAdm");
+
+        boolean expResult = true;
+
+        boolean result = UserDB.getInstance().saveUser(user);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of getAllUsers method, of class UserDB.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testGetUserByUsername")
     public void testGetAllUsers() throws Exception {
         System.out.println("getAllUsers");
-        UserDB instance = null;
-        ArrayList expResult = null;
-        ArrayList result = instance.getAllUsers();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ArrayList result = UserDB.getInstance().getAllUsers();
+        assertEquals(result.size(), 1);
     }
 
     /**
      * Test of getUserByUsername method, of class UserDB.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testUserExist")
     public void testGetUserByUsername() throws Exception {
         System.out.println("getUserByUsername");
-        String str = "";
-        UserDB instance = null;
-        User expResult = null;
-        User result = instance.getUserByUsername(str);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String str = "juanitoAdm";
+
+        User expResult = new User();
+        expResult.setName("Juan");
+        expResult.setUsername("juanitoAdm");
+
+        User result = UserDB.getInstance().getUserByUsername(str);
+        assertEquals(result.getName(), expResult.getName());
+        assertEquals(result.getUsername(), expResult.getUsername());
     }
 
     /**
      * Test of deleteUser method, of class UserDB.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testGetAllUsers")
     public void testDeleteUser() throws Exception {
         System.out.println("deleteUser");
-        Long id = null;
-        UserDB instance = null;
-        instance.deleteUser(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        long id = 1;
+        UserDB.getInstance().deleteUser(id);
     }
-    
+
 }
