@@ -42,85 +42,74 @@ public class UtilNGTest {
     /**
      * Test of getLocalDateFromDate method, of class Util.
      */
-    @Test(enabled=false)
+    @Test
     public void testGetLocalDateFromDate() {
         System.out.println("getLocalDateFromDate");
-        Date d = null;
-        LocalDate expResult = null;
+        Date d = new Date(1557303273480L);
+        LocalDate expResult = LocalDate.of(2019, 5, 8);
         LocalDate result = Util.getLocalDateFromDate(d);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of getDateFromLocalDate method, of class Util.
      */
-    @Test(enabled=false)
+    @Test
     public void testGetDateFromLocalDate() {
         System.out.println("getDateFromLocalDate");
-        LocalDate l = null;
-        Date expResult = null;
+        LocalDate l = LocalDate.of(2019, 5, 8);
+        Date expResult = new Date(1557298800000L);
         Date result = Util.getDateFromLocalDate(l);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of LocalDateToString method, of class Util.
      */
-    @Test(enabled=false)
+    @Test
     public void testLocalDateToString() {
         System.out.println("LocalDateToString");
-        LocalDate l = null;
-        String expResult = "";
+        LocalDate l = LocalDate.of(2019, 2, 10);
+        String expResult = "2019-02-10";
         String result = Util.LocalDateToString(l);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
      * Test of LocalDateToStringSpanish method, of class Util.
      */
-    @Test(enabled=false)
+    @Test
     public void testLocalDateToStringSpanish() {
         System.out.println("LocalDateToStringSpanish");
-        LocalDate l = null;
-        String expResult = "";
+        LocalDate l = LocalDate.of(2019, 2, 10);
+        String expResult = "domingo 10 de febrero del 2019";
         String result = Util.LocalDateToStringSpanish(l);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of CapitalizeFirstLetter method, of class Util.
      */
-    @Test(enabled=false)
+    @Test
     public void testCapitalizeFirstLetter() {
         System.out.println("CapitalizeFirstLetter");
-        String str = "";
-        String expResult = "";
+        String str = "hola";
+        String expResult = "Hola";
         String result = Util.CapitalizeFirstLetter(str);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of encrypt method, of class Util.
      */
-    @Test(enabled=false)
+    @Test
     public void testEncrypt() {
         System.out.println("encrypt");
-        String str = "";
-        String expResult = "";
+        String str = "text to encrypt";
+        String expResult = "d9628901d13de4f6668dfabf049ec325aaa738fc956cfcaca2d047ffe95c56fe";
         String result = Util.encrypt(str);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
     
 }
