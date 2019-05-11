@@ -40,7 +40,7 @@ public class Util {
             return null;
         }
         Locale locale = new Locale("es", "ES");
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE d MMMM uuuu", locale);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE d 'de' MMMM 'del' uuuu", locale);
         return l.format(formatter);
     }
 
