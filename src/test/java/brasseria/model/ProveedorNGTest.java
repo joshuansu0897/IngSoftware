@@ -18,7 +18,9 @@ import org.testng.annotations.Test;
  * @author joshuansu
  */
 public class ProveedorNGTest {
-    
+
+    Proveedor proveedor = new Proveedor();
+
     public ProveedorNGTest() {
     }
 
@@ -41,136 +43,124 @@ public class ProveedorNGTest {
     /**
      * Test of getId method, of class Proveedor.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetId")
     public void testGetId() {
         System.out.println("getId");
-        Proveedor instance = new Proveedor();
-        long expResult = 0L;
-        long result = instance.getId();
+        long expResult = 1;
+        long result = proveedor.getId();
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setId method, of class Proveedor.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetId() {
         System.out.println("setId");
-        long id = 0L;
-        Proveedor instance = new Proveedor();
-        instance.setId(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        long id = 1;
+        proveedor.setId(id);
     }
 
     /**
      * Test of getName method, of class Proveedor.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetName")
     public void testGetName() {
         System.out.println("getName");
-        Proveedor instance = new Proveedor();
-        String expResult = "";
-        String result = instance.getName();
+        String expResult = "Arrow Head Potatoes";
+        String result = proveedor.getName();
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setName method, of class Proveedor.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetName() {
         System.out.println("setName");
-        String name = "";
-        Proveedor instance = new Proveedor();
-        instance.setName(name);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String name = "Arrow Head Potatoes";
+        proveedor.setName(name);
     }
 
     /**
      * Test of getDescription method, of class Proveedor.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetDescription")
     public void testGetDescription() {
         System.out.println("getDescription");
-        Proveedor instance = new Proveedor();
-        String expResult = "";
-        String result = instance.getDescription();
+        String expResult = "Moss Produce, LLC purchased the existing Arrowhead Potato Company facility in 2007"
+                + " and continues operations under the trade name of Arrowhead Potato Company. "
+                + "Arrowhead Potato Company is a business within a family of businesses "
+                + "owned by the Moss family and is vertically integrated "
+                + "with the Moss Farms farming operation. "
+                + "This vertical integration has provided Arrowhead "
+                + "Potato Company a consistent supply of "
+                + "high quality Idaho potatoes. "
+                + "Arrowhead Potato Company sells Idaho potatoes to local "
+                + "individuals and restaurants and to national food service companies.";
+        String result = proveedor.getDescription();
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setDescription method, of class Proveedor.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetDescription() {
         System.out.println("setDescription");
-        String description = "";
-        Proveedor instance = new Proveedor();
-        instance.setDescription(description);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String description = "Moss Produce, LLC purchased the existing Arrowhead Potato Company facility in 2007"
+                + " and continues operations under the trade name of Arrowhead Potato Company. "
+                + "Arrowhead Potato Company is a business within a family of businesses "
+                + "owned by the Moss family and is vertically integrated "
+                + "with the Moss Farms farming operation. "
+                + "This vertical integration has provided Arrowhead "
+                + "Potato Company a consistent supply of "
+                + "high quality Idaho potatoes. "
+                + "Arrowhead Potato Company sells Idaho potatoes to local "
+                + "individuals and restaurants and to national food service companies.";
+
+        proveedor.setDescription(description);
     }
 
     /**
      * Test of getCreateAt method, of class Proveedor.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetCreateAt")
     public void testGetCreateAt() {
         System.out.println("getCreateAt");
-        Proveedor instance = new Proveedor();
-        LocalDate expResult = null;
-        LocalDate result = instance.getCreateAt();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LocalDate expResult = LocalDate.of(2019, 1, 10);
+        assertEquals(proveedor.getCreateAt(), expResult);
     }
 
     /**
      * Test of setCreateAt method, of class Proveedor.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetCreateAt() {
         System.out.println("setCreateAt");
-        LocalDate createAt = null;
-        Proveedor instance = new Proveedor();
-        instance.setCreateAt(createAt);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LocalDate createAt = LocalDate.of(2019, 1, 10);
+        proveedor.setCreateAt(createAt);
     }
 
     /**
      * Test of getUpdateAt method, of class Proveedor.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSetUpdateAt")
     public void testGetUpdateAt() {
         System.out.println("getUpdateAt");
-        Proveedor instance = new Proveedor();
-        LocalDate expResult = null;
-        LocalDate result = instance.getUpdateAt();
+        LocalDate expResult = LocalDate.of(2019, 1, 11);
+        LocalDate result = proveedor.getUpdateAt();
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setUpdateAt method, of class Proveedor.
      */
-    @Test(enabled=false)
+    @Test
     public void testSetUpdateAt() {
         System.out.println("setUpdateAt");
-        LocalDate updateAt = null;
-        Proveedor instance = new Proveedor();
-        instance.setUpdateAt(updateAt);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        LocalDate updateAt = LocalDate.of(2019, 1, 11);
+        proveedor.setUpdateAt(updateAt);
     }
-    
+
 }
