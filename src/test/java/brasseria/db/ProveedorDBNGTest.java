@@ -6,6 +6,9 @@
 package brasseria.db;
 
 import brasseria.model.Proveedor;
+import java.io.File;
+import java.sql.Connection;
+import java.sql.Statement;
 import java.util.ArrayList;
 import static org.testng.Assert.*;
 import org.testng.annotations.AfterClass;
@@ -19,16 +22,27 @@ import org.testng.annotations.Test;
  * @author joshuansu
  */
 public class ProveedorDBNGTest {
-    
+
     public ProveedorDBNGTest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+        new File("Configuracion/config.json").renameTo(new File("Configuracion/configProduction.json"));
+        new File("Configuracion/configTest.json").renameTo(new File("Configuracion/config.json"));
+        try (Connection con = ProveedorDB.getInstance().getConnection(); Statement stm = con.createStatement()) {
+            stm.execute("SET GLOBAL FOREIGN_KEY_CHECKS=0;");
+        }
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
+        try (Connection con = ProveedorDB.getInstance().getConnection(); Statement stm = con.createStatement()) {
+            stm.execute("SET GLOBAL FOREIGN_KEY_CHECKS=1;");
+            stm.execute("DELETE FROM Proveedor");
+        }
+        new File("Configuracion/config.json").renameTo(new File("Configuracion/configTest.json"));
+        new File("Configuracion/configProduction.json").renameTo(new File("Configuracion/config.json"));
     }
 
     @BeforeMethod
@@ -42,101 +56,91 @@ public class ProveedorDBNGTest {
     /**
      * Test of getInstance method, of class ProveedorDB.
      */
-    @Test(enabled=false)
+    @Test
     public void testGetInstance() {
         System.out.println("getInstance");
-        ProveedorDB expResult = null;
-        ProveedorDB result = ProveedorDB.getInstance();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ProveedorDB instance = ProveedorDB.getInstance();
+        assertNotNull(ProveedorDB.getInstance());
+        assertEquals(instance, ProveedorDB.getInstance());
     }
 
     /**
      * Test of proveedorExist method, of class ProveedorDB.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testSaveProveedor")
     public void testProveedorExist() throws Exception {
         System.out.println("proveedorExist");
-        String name = "";
-        ProveedorDB instance = null;
-        boolean expResult = false;
-        boolean result = instance.proveedorExist(name);
+        String name = "name";
+
+        boolean expResult = true;
+        boolean result = ProveedorDB.getInstance().proveedorExist(name);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of saveProveedor method, of class ProveedorDB.
      */
-    @Test(enabled=false)
+    @Test
     public void testSaveProveedor() throws Exception {
         System.out.println("saveProveedor");
-        Proveedor proveedor = null;
-        ProveedorDB instance = null;
-        boolean expResult = false;
-        boolean result = instance.saveProveedor(proveedor);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Proveedor proveedor = new Proveedor();
+        proveedor.setName("name");
+        proveedor.setDescription("description");
+        assertEquals(ProveedorDB.getInstance().saveProveedor(proveedor), true);
+
+        Proveedor proveedor2 = new Proveedor();
+        proveedor2.setName("name2");
+        proveedor2.setDescription("description2");
+        assertEquals(ProveedorDB.getInstance().saveProveedor(proveedor2), true);
     }
 
     /**
      * Test of getAllProveedores method, of class ProveedorDB.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testGetProveedorByName")
     public void testGetAllProveedores() throws Exception {
         System.out.println("getAllProveedores");
-        ProveedorDB instance = null;
-        ArrayList expResult = null;
-        ArrayList result = instance.getAllProveedores();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ArrayList result = ProveedorDB.getInstance().getAllProveedores();
+        assertEquals(2, result.size());
     }
 
     /**
      * Test of getProveedorByName method, of class ProveedorDB.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testProveedorExist")
     public void testGetProveedorByName() throws Exception {
         System.out.println("getProveedorByName");
-        String str = "";
-        ProveedorDB instance = null;
-        Proveedor expResult = null;
-        Proveedor result = instance.getProveedorByName(str);
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        String str = "name";
+        
+        Proveedor expResult = new Proveedor();
+        expResult.setName("name");
+        expResult.setDescription("description");
+
+        Proveedor result = ProveedorDB.getInstance().getProveedorByName(str);
+        assertEquals(result.getName(), expResult.getName());
+        assertEquals(result.getDescription(), expResult.getDescription());
     }
 
     /**
      * Test of getProveedorById method, of class ProveedorDB.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testGetAllProveedores")
     public void testGetProveedorById() throws Exception {
         System.out.println("getProveedorById");
         long id = 0L;
-        ProveedorDB instance = null;
         Proveedor expResult = null;
-        Proveedor result = instance.getProveedorById(id);
+        Proveedor result = ProveedorDB.getInstance().getProveedorById(id);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of deleteProveedor method, of class ProveedorDB.
      */
-    @Test(enabled=false)
+    @Test(dependsOnMethods = "testGetProveedorById")
     public void testDeleteProveedor() throws Exception {
         System.out.println("deleteProveedor");
-        Long id = null;
-        ProveedorDB instance = null;
-        instance.deleteProveedor(id);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        long id = 0L;
+        ProveedorDB.getInstance().deleteProveedor(id);
     }
-    
+
 }
