@@ -29,8 +29,10 @@ public class UserDBNGTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        new File("Configuracion/config.json").renameTo(new File("Configuracion/configProduction.json"));
-        new File("Configuracion/configTest.json").renameTo(new File("Configuracion/config.json"));
+        if (!(new File("Configuracion/configProduction.json")).exists()) {
+            new File("Configuracion/config.json").renameTo(new File("Configuracion/configProduction.json"));
+            new File("Configuracion/configTest.json").renameTo(new File("Configuracion/config.json"));
+        }
     }
 
     @AfterClass
@@ -38,8 +40,10 @@ public class UserDBNGTest {
         try (Connection con = MovimientoDB.getInstance().getConnection(); Statement stm = con.createStatement()) {
             stm.execute("DELETE FROM User");
         }
-        new File("Configuracion/config.json").renameTo(new File("Configuracion/configTest.json"));
-        new File("Configuracion/configProduction.json").renameTo(new File("Configuracion/config.json"));
+        if (!(new File("Configuracion/configTest.json")).exists()) {
+            new File("Configuracion/config.json").renameTo(new File("Configuracion/configTest.json"));
+            new File("Configuracion/configProduction.json").renameTo(new File("Configuracion/config.json"));
+        }
     }
 
     @BeforeMethod

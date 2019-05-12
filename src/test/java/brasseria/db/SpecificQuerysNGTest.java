@@ -27,8 +27,10 @@ public class SpecificQuerysNGTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        new File("Configuracion/config.json").renameTo(new File("Configuracion/configProduction.json"));
-        new File("Configuracion/configTest.json").renameTo(new File("Configuracion/config.json"));
+        if (!(new File("Configuracion/configProduction.json")).exists()) {
+            new File("Configuracion/config.json").renameTo(new File("Configuracion/configProduction.json"));
+            new File("Configuracion/configTest.json").renameTo(new File("Configuracion/config.json"));
+        }
         try (Connection con = ProductoDB.getInstance().getConnection(); Statement stm = con.createStatement()) {
             stm.execute("SET GLOBAL FOREIGN_KEY_CHECKS=0;");
             stm.execute("INSERT INTO Product("
@@ -60,8 +62,10 @@ public class SpecificQuerysNGTest {
             stm.execute("DELETE FROM Product WHERE name='name5'");
             stm.execute("DELETE FROM Product WHERE name='name10'");
         }
-        new File("Configuracion/config.json").renameTo(new File("Configuracion/configTest.json"));
-        new File("Configuracion/configProduction.json").renameTo(new File("Configuracion/config.json"));
+        if (!(new File("Configuracion/configTest.json")).exists()) {
+            new File("Configuracion/config.json").renameTo(new File("Configuracion/configTest.json"));
+            new File("Configuracion/configProduction.json").renameTo(new File("Configuracion/config.json"));
+        }
     }
 
     @BeforeMethod

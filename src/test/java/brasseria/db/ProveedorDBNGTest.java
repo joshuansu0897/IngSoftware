@@ -28,8 +28,10 @@ public class ProveedorDBNGTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        new File("Configuracion/config.json").renameTo(new File("Configuracion/configProduction.json"));
-        new File("Configuracion/configTest.json").renameTo(new File("Configuracion/config.json"));
+        if (!(new File("Configuracion/configProduction.json")).exists()) {
+            new File("Configuracion/config.json").renameTo(new File("Configuracion/configProduction.json"));
+            new File("Configuracion/configTest.json").renameTo(new File("Configuracion/config.json"));
+        }
         try (Connection con = ProveedorDB.getInstance().getConnection(); Statement stm = con.createStatement()) {
             stm.execute("SET GLOBAL FOREIGN_KEY_CHECKS=0;");
         }
@@ -41,8 +43,10 @@ public class ProveedorDBNGTest {
             stm.execute("SET GLOBAL FOREIGN_KEY_CHECKS=1;");
             stm.execute("DELETE FROM Proveedor");
         }
-        new File("Configuracion/config.json").renameTo(new File("Configuracion/configTest.json"));
-        new File("Configuracion/configProduction.json").renameTo(new File("Configuracion/config.json"));
+        if (!(new File("Configuracion/configTest.json")).exists()) {
+            new File("Configuracion/config.json").renameTo(new File("Configuracion/configTest.json"));
+            new File("Configuracion/configProduction.json").renameTo(new File("Configuracion/config.json"));
+        }
     }
 
     @BeforeMethod
@@ -111,7 +115,7 @@ public class ProveedorDBNGTest {
     public void testGetProveedorByName() throws Exception {
         System.out.println("getProveedorByName");
         String str = "name";
-        
+
         Proveedor expResult = new Proveedor();
         expResult.setName("name");
         expResult.setDescription("description");

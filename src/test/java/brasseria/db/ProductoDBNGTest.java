@@ -28,8 +28,10 @@ public class ProductoDBNGTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
-        new File("Configuracion/config.json").renameTo(new File("Configuracion/configProduction.json"));
-        new File("Configuracion/configTest.json").renameTo(new File("Configuracion/config.json"));
+        if (!(new File("Configuracion/configProduction.json")).exists()) {
+            new File("Configuracion/config.json").renameTo(new File("Configuracion/configProduction.json"));
+            new File("Configuracion/configTest.json").renameTo(new File("Configuracion/config.json"));
+        }
         try (Connection con = ProductoDB.getInstance().getConnection(); Statement stm = con.createStatement()) {
             stm.execute("SET GLOBAL FOREIGN_KEY_CHECKS=0;");
         }
@@ -41,8 +43,10 @@ public class ProductoDBNGTest {
             stm.execute("SET GLOBAL FOREIGN_KEY_CHECKS=1;");
             stm.execute("DELETE FROM Product");
         }
-        new File("Configuracion/config.json").renameTo(new File("Configuracion/configTest.json"));
-        new File("Configuracion/configProduction.json").renameTo(new File("Configuracion/config.json"));
+        if (!(new File("Configuracion/configTest.json")).exists()) {
+            new File("Configuracion/config.json").renameTo(new File("Configuracion/configTest.json"));
+            new File("Configuracion/configProduction.json").renameTo(new File("Configuracion/config.json"));
+        }
     }
 
     @BeforeMethod
