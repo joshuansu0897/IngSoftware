@@ -10,8 +10,8 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ArrayList;
 import static org.testng.Assert.*;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -33,10 +33,10 @@ public class SpecificQuerysNGTest {
             stm.execute("SET GLOBAL FOREIGN_KEY_CHECKS=0;");
             stm.execute("INSERT INTO Product("
                     + "	id, name, description, perecederos, proveedor_id) "
-                    + "	VALUES ('1', 'name', 'description', '1', '1')");
+                    + "	VALUES ('1', 'name10', 'description', '1', '1')");
             stm.execute("INSERT INTO Product("
                     + "	id, name, description, perecederos, proveedor_id) "
-                    + "	VALUES ('2', 'name2', 'description2', '0', '2')");
+                    + "	VALUES ('2', 'name5', 'description2', '0', '2')");
         }
         try (Connection con = MovimientoDB.getInstance().getConnection(); Statement stm = con.createStatement()) {
             stm.execute("SET GLOBAL FOREIGN_KEY_CHECKS=0;");
@@ -57,7 +57,8 @@ public class SpecificQuerysNGTest {
         }
         try (Connection con = ProductoDB.getInstance().getConnection(); Statement stm = con.createStatement()) {
             stm.execute("SET GLOBAL FOREIGN_KEY_CHECKS=1");
-            stm.execute("DELETE FROM Product");
+            stm.execute("DELETE FROM Product WHERE name='name5'");
+            stm.execute("DELETE FROM Product WHERE name='name10'");
         }
         new File("Configuracion/config.json").renameTo(new File("Configuracion/configTest.json"));
         new File("Configuracion/configProduction.json").renameTo(new File("Configuracion/config.json"));
@@ -90,10 +91,10 @@ public class SpecificQuerysNGTest {
         System.out.println("getProductsAndCount");
         ArrayList<Object[]> expResult = new ArrayList();
 
-        Object[] obj = new Object[]{"name", 60};
+        Object[] obj = new Object[]{"name10", 60};
         expResult.add(obj);
 
-        Object[] obj2 = new Object[]{"name2", 100};
+        Object[] obj2 = new Object[]{"name5", 100};
         expResult.add(obj2);
 
         ArrayList result = SpecificQuerys.getInstance().getProductsAndCount();
@@ -109,8 +110,8 @@ public class SpecificQuerysNGTest {
     @Test
     public void testGetProductsAndCountByName() throws Exception {
         System.out.println("getProductsAndCountByName");
-        String name = "name";
-        Object[] expResult = new Object[]{"name", 0, 0, "60"};
+        String name = "name10";
+        Object[] expResult = new Object[]{"name10", 0, 0, "60"};
         Object[] result = SpecificQuerys.getInstance().getProductsAndCountByName(name);
         assertEquals(result, expResult);
     }
