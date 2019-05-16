@@ -1,0 +1,7 @@
+<project name="Sample" default="runTestNG" basedir=".">
+	<target name="runTestNG" depends="compile-test">
+		<testng classpathref="classpath.test" useDefaultListeners="false"  haltonfailure="false">
+			<xmlfileset dir="." includes="testng.xml" />
+		</testng>
+	</target>	
+</project>
